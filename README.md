@@ -1,2 +1,2 @@
 # quiz-time-app
-This is an quiz app
+This is a quiz app
