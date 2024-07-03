@@ -18,8 +18,7 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
-    position: absolute;
-    visibility: hidden;
+    margin-top: 100px;
 }
 
 .startpage .quiz {
@@ -67,7 +66,6 @@ body {
     background-color: #CCE2C2;
     height: 100%;
     width: 100%;
-    /* visibility: hidden; */
     gap: 20px;
 
 }
