@@ -104,16 +104,22 @@ const quiz = {
 };
 
 let currentQuestionIndex = 0;
-var arrofopt;
-var ans;
-var choice;
-var opt1;
-var opt2;
-var opt3;
-var opt4;
-var isAnswered = false;
+var points = 0;
+var yourPoint;
+var getyourPoint;
+let arrofopt;
+let ans;
+let choice;
+let opt1;
+let opt2;
+let opt3;
+let opt4;
+let isAnswered = false;
+let timerInterval;  // Variable to hold the timer interval
+let timeLeft = 30;  // Initial time for each question
 
 function showQuestion(index) {
+    clearInterval(timerInterval); // Clear any existing timer interval
     if (arrofopt) {
         arrofopt.forEach(option => {
             option.classList.remove('right', 'wrong');
@@ -121,35 +127,86 @@ function showQuestion(index) {
         });
     }
     const qn = document.querySelector('.qnumber');
-    const i = index + 1;
-    qn.firstElementChild.textContent = `${i}/10`
+    qn.firstElementChild.textContent = `${index + 1}/10`;
+
     const questionElement = document.querySelector('.question2 span');
     questionElement.textContent = quiz.questions[index].question;
+
     opt1 = document.getElementById('option1');
     opt2 = document.getElementById('option2');
     opt3 = document.getElementById('option3');
     opt4 = document.getElementById('option4');
-    opt1.firstElementChild.textContent = quiz.questions[index].options[0]
-    opt2.firstElementChild.textContent = quiz.questions[index].options[1]
-    opt3.firstElementChild.textContent = quiz.questions[index].options[2]
-    opt4.firstElementChild.textContent = quiz.questions[index].options[3]
-    arrofopt = [opt1, opt2, opt3, opt4]
-    ans = quiz.questions[index].answer
-    choice = document.querySelector('.selectans2')
-    isAnswered = false; 
+
+    const options = quiz.questions[index].options;
+    opt1.firstElementChild.textContent = options[0];
+    opt2.firstElementChild.textContent = options[1];
+    opt3.firstElementChild.textContent = options[2];
+    opt4.firstElementChild.textContent = options[3];
+
+    arrofopt = [opt1, opt2, opt3, opt4];
+    ans = quiz.questions[index].answer;
+    choice = document.querySelector('.selectans2');
+    isAnswered = false;
+
+    // Start the timer for this question
+    startTimer();
 }
 
-document.getElementById('nextButton').addEventListener('click', () => {
-    console.log(currentQuestionIndex)
+function startTimer() {
+    const timerSpan = document.querySelector('.timerSpan');
+    timeLeft = 30;
+    timerSpan.textContent = formatTime(timeLeft);
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        timerSpan.textContent = formatTime(timeLeft);
+
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            handleTimeOut();
+        }
+        else if(timeLeft <= 5){
+            document.getElementById('questions').style.backgroundColor = '#DBADAD';
+            document.getElementById('timerSpan').style.backgroundColor = '#C50C00';
+            console.log(document.getElementById("container"))
+        }
+        else if (timeLeft <= 15) {
+            document.getElementById('questions').style.backgroundColor = 'rgb(228, 229, 199)';
+            document.getElementById('timerSpan').style.backgroundColor = '#C5B100';
+            console.log(document.getElementById("container"))
+        }
+    }, 1000);
+}
+
+function handleTimeOut() {
     currentQuestionIndex++;
     if (currentQuestionIndex < quiz.questions.length) {
         showQuestion(currentQuestionIndex);
     } else {
         alert('You have completed the quiz!');
     }
+}
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
+
+document.getElementById('nextButton').addEventListener('click', () => {
+    clearInterval(timerInterval);
+    currentQuestionIndex++;
+    if (currentQuestionIndex < quiz.questions.length) {
+        showQuestion(currentQuestionIndex);
+    } else {
+        alert('You have completed the quiz!');
+        document.getElementById('questions').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'hidden';
+    }
 });
 
-// Initialize the first question
+// Initialize the first question and start the timer
 showQuestion(currentQuestionIndex);
 
 choice.addEventListener('click', (event) => {
@@ -159,6 +216,10 @@ choice.addEventListener('click', (event) => {
         console.log(event.target.textContent)
         event.target.parentElement.classList.add('right')
         event.target.parentElement.lastElementChild.classList.add('rightans')
+        points++;
+        localStorage.setItem('yourPoint', points);
+        getyourPoint = localStorage.getItem('yourPoint');
+        console.log(getyourPoint)
     }
     else {
         event.target.parentElement.classList.add('wrong')
@@ -177,3 +238,4 @@ choice.addEventListener('click', (event) => {
     console.log(`answer:${ans}`);
 
 })
+
