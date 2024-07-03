@@ -3,15 +3,13 @@ body {
 }
 
 .container {
-    height: 1400px;
-    width: 100vw;
+    height: 1325px;
+    width: auto;
     background-color: #F5F5F57A;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    align-content: center;
-    gap: 20px;
 }
 
 .startpage {
@@ -44,13 +42,12 @@ body {
 }
 
 .topDivs {
-    display: flex;
     height: 78px;
-    width: 70%;
-    gap: 90%;
+    width: 79%;
+    gap: 75%;
     display: flex;
     padding: 20px;
-    margin-left: 212px;
+    margin-left: 173px;
     margin-top: 90px;
 }
 
@@ -146,7 +143,7 @@ body {
 
 .qnumber span {
     float: right;
-    margin-right: 90px;
+    margin-right: 218px;
     font-size: 3rem;
     align-items: center;
     text-align: center;
@@ -167,9 +164,10 @@ body {
 
 .timer span {
     float: right;
-    margin-right: 90px;
+    margin-right: 218px;
+    margin-bottom: 29px;
     font-size: 3rem;
-    align-items: center;
+    /* align-items: center; */
     text-align: center;
     background-color: #02A409;
     padding: 10px;
