@@ -41,13 +41,13 @@ body {
 }
 
 .topDivs {
-    height: 78px;
-    width: 79%;
-    gap: 75%;
+    gap: 4px;
     display: flex;
+    flex-direction: column;
     padding: 20px;
-    margin-left: 173px;
     margin-top: 90px;
+    justify-self: center;
+    align-items: center;
 }
 
 .speaker {
@@ -152,8 +152,9 @@ body {
     border-style: groove;
 }
 
-.logo {
-    margin-left: 20px;
+#logo {
+    height: 100px;
+    width: 200px;
 }
 
 .timer {
@@ -229,7 +230,7 @@ body {
     height: 56px;
     width: 124px;
     background: transparent;
-    margin-top: -211px;
+    margin-top: -90px;
     font-size: 2rem;
     color: green;
     border-style: none;
@@ -339,5 +340,5 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 30px;
-}
+}   
 
