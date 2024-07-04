@@ -202,9 +202,13 @@ function formatTime(seconds) {
 document.getElementById('nextButton').addEventListener('click', () => {
     clearInterval(timerInterval);
     currentQuestionIndex++;
-    if (currentQuestionIndex < quiz.questions.length) {
+    if (currentQuestionIndex < quiz.questions.length && isAnswered) {
         showQuestion(currentQuestionIndex);
-    } else {
+    }
+    else if(!isAnswered) {
+        alert('select an option');
+    }
+    else{
         alert('You have completed the quiz!');
         window.location.href = 'score.html';
     }
@@ -242,7 +246,7 @@ choice.addEventListener('click', (event) => {
     isAnswered = true; 
     console.log(`your choice:${event.target.textContent}`);
     console.log(`answer:${ans}`);
-
+    ans = '';
 })
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -12,8 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('message').textContent = '“Keep learning, you have a good score!”'
         else if (yourScore <= 9)
             document.getElementById('message').textContent = '“Keep learning, you are doing great!”'
-        else 
+        else if(yourScore == 10)
             document.getElementById('message').textContent = '“Congratulations!”'
+        else{
+            document.getElementById('message').textContent = '“Something went wrong,please retry!”'
+        }
     }
 });
 
