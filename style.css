@@ -237,3 +237,92 @@ body {
 .display{
     visibility: visible;
 }
+
+.scores{
+    background-color: #F6F4F0;
+}
+
+.progress-container{
+    height: 30vh;
+    width: 100%;
+    display: flex;  
+    justify-content: center;
+    justify-items: center;
+    align-items: center ;
+    flex-direction: column;
+}
+
+.progressbar{
+    height: 50px;
+    width: 50%;
+    background-color: #FF7A7A;
+    border-color: #FF7A7A;
+    border-style: solid;
+    border-radius: 9px;
+    position: absolute;
+}
+
+.progressvalue{
+    height: 51px;
+    width: 50%;
+    background-color: #02A409;
+    border-color: #02A409;
+    border-style: solid;
+    border-radius: 9px;
+    position: absolute;
+    margin-top: -3px;
+    margin-left: -2px;
+}
+
+.belowpart{
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+#span{
+    margin-top: 200px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: medium;
+}
+
+#retry{
+    height: 100px;
+    width: 200px;
+    background-color: #35BD3A;
+    color: #F5F5F5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    border-radius: 9px;
+    border-style: outset;
+    border-color: #35BD3A;
+}
+
+#message{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.upperpart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.upperpart img{
+    height: 100px;
+    width: 200px;
+}
+
+#result{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: medium;
+}

@@ -1,3 +1,4 @@
+
 const quiz = {
     questions: [
         {
@@ -201,8 +202,7 @@ document.getElementById('nextButton').addEventListener('click', () => {
         showQuestion(currentQuestionIndex);
     } else {
         alert('You have completed the quiz!');
-        document.getElementById('questions').style.visibility = 'hidden';
-        document.getElementById('nextButton').style.visibility = 'hidden';
+        window.location.href = 'score.html';
     }
 });
 
