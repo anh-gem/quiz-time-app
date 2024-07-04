@@ -51,8 +51,8 @@ body {
 }
 
 .speaker {
-    height: 30px;
-    width: 30px;
+    height: 34px;
+    width: 43px;
     margin-top: 30px;
 }
 
@@ -108,6 +108,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    border-style: none;
 }
 
 .selectans1 {
@@ -326,3 +327,17 @@ body {
     font-weight: 800;
     font-size: medium;
 }
+
+.unmute{
+    background-image: url('./images/speaker.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.mute{
+    background-image: url('./images/mute.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30px;
+}
+

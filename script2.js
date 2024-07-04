@@ -162,20 +162,24 @@ function startTimer() {
         timeLeft--;
         timerSpan.textContent = formatTime(timeLeft);
 
-        
-        if (timeLeft <= 0) {
+        if((timeLeft >15 && timeLeft <= 30))
+            {
+                document.getElementById('questions').style.backgroundColor = '#CCE2C2';
+                document.getElementById('timerSpan').style.backgroundColor = '#02A409';
+            }
+        else if (timeLeft <= 0) {
             clearInterval(timerInterval);
             handleTimeOut();
         }
-        else if(timeLeft <= 5){
+        else if(timeLeft >0 && timeLeft <= 5){
             document.getElementById('questions').style.backgroundColor = '#DBADAD';
             document.getElementById('timerSpan').style.backgroundColor = '#C50C00';
-            console.log(document.getElementById("container"))
+            console.log(document.getElementById("container"));
         }
-        else if (timeLeft <= 15) {
+        else if (timeLeft >5 && timeLeft <= 15) {
             document.getElementById('questions').style.backgroundColor = 'rgb(228, 229, 199)';
             document.getElementById('timerSpan').style.backgroundColor = '#C5B100';
-            console.log(document.getElementById("container"))
+            console.log(document.getElementById("container"));
         }
     }, 1000);
 }
@@ -224,6 +228,8 @@ choice.addEventListener('click', (event) => {
     else {
         event.target.parentElement.classList.add('wrong')
         event.target.parentElement.lastElementChild.classList.add('wrongans')
+        choice.classList.remove('wrong')
+        choice.classList.remove('wrongans')
         arrofopt.forEach((e) => {
             if (e.firstElementChild.textContent == ans) {
                 e.classList.add('right');
@@ -238,5 +244,24 @@ choice.addEventListener('click', (event) => {
     console.log(`answer:${ans}`);
 
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+    const audioElement = document.getElementById('background-music');
+    const speakerButton = document.getElementById('speaker');
+    speakerButton.classList.add('unmute')
+
+    speakerButton.addEventListener('click', () => {
+        if (audioElement.muted) {
+            audioElement.muted = false;
+            speakerButton.classList.remove('mute')
+            speakerButton.classList.add('unmute')
+        } else {
+            audioElement.muted = true;
+            speakerButton.classList.remove('unmute')
+            speakerButton.classList.add('mute')
+        }
+    });
+});
+
 
 
